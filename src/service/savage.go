@@ -21,11 +21,9 @@ func NewSavageService(savage repository.Savage) *savageRepository {
 
 func (s *savageRepository) Get() (*model.Savage, error) {
 
-	savage := model.Savage{
-		UserID:    1,
-		ID:        1,
-		Title:     "Savage",
-		Completed: true,
+	savage, err := s.savage.GetSavage()
+	if err != nil {
+		return nil, err
 	}
 	return &savage, nil
 }
