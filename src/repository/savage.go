@@ -19,7 +19,7 @@ type savage struct {
 	}
 }
 
-func NewSavege(ctx context.Context) *savage {
+func NewSavage(ctx context.Context) *savage {
 	return &savage{}
 
 }

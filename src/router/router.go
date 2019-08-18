@@ -6,14 +6,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func NewRouter(handler *handler.Func) *mux.Router {
+func NewRouter(handler *handler.Funcs) *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes(handler) {
 		router.
-			Methods(route.Method)
-		Path(route.Pattern)
-		Name(route.Name)
-		Handler(route.HandlerFunc)
+			Methods(route.Method).
+			Path(route.Pattern).
+			Name(route.Name).
+			Handler(route.HandlerFunc)
 	}
 	return router
 
