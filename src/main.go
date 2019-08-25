@@ -23,6 +23,7 @@ func init() {
 	}
 }
 
+// Main function with Router
 func main() {
 	r := router.NewRouter(handlerFuncs)
 	http.ListenAndServe(":8080", r)
