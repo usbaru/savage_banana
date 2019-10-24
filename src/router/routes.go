@@ -17,7 +17,7 @@ func routes(handler *handler.Funcs) []route {
 		{
 			Name:        "GetSavage",
 			Method:      http.MethodGet,
-			Pattern:     "/get",
+			Pattern:     "/get/{number}",
 			HandlerFunc: handler.GetSavage,
 		},
 	}

@@ -11,11 +11,12 @@ import (
 
 var (
 	ctx          = context.Background()
+	client       = http.Client{}
 	handlerFuncs *handler.Funcs
 )
 
 func init() {
-	savageRepository := repository.NewSavage(ctx)
+	savageRepository := repository.NewSavage(ctx, client)
 	savageService := service.NewSavageService(savageRepository)
 	handlerFuncs = &handler.Funcs{
 		Ctx:    ctx,

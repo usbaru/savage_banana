@@ -6,7 +6,7 @@ import (
 )
 
 type Savage interface {
-	Get() (*model.Savage, error)
+	Get(number string) (*model.Savage, error)
 }
 
 type savageRepository struct {
@@ -19,18 +19,12 @@ func NewSavageService(savage repository.Savage) *savageRepository {
 	}
 }
 
-func (s *savageRepository) Get() (*model.Savage, error) {
+func (s *savageRepository) Get(number string) (*model.Savage, error) {
 
-	// savage, err := s.savage.GetSavage()
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	savageResponse := model.Savage{
-		UserID:    1,
-		ID:        1,
-		Title:     "Fuck Shit Cock",
-		Completed: false,
+	savage, err := s.savage.GetSavage(number)
+	if err != nil {
+		return nil, err
 	}
-	return &savageResponse, nil
+
+	return savage, nil
 }

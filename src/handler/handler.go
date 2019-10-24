@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"src/src/service"
+
+	"github.com/gorilla/mux"
 )
 
 type Funcs struct {
@@ -13,7 +15,11 @@ type Funcs struct {
 }
 
 func (h *Funcs) GetSavage(w http.ResponseWriter, r *http.Request) {
-	savage, err := h.Savage.Get()
+
+	requestParameters := mux.Vars(r)
+	number := requestParameters["number"]
+
+	savage, err := h.Savage.Get(number)
 	if err != nil {
 		w.WriteHeader(http.StatusBadGateway)
 		return
